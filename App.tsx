@@ -8,11 +8,10 @@ import ExecuteInspection from './pages/ExecuteInspection';
 import EditTemplate from './pages/EditTemplate';
 import Finance from './pages/Finance';
 
-// Placeholder pages for the structure requested
 const Placeholder = ({ name }: { name: string }) => (
   <div className="p-10 text-center">
     <h1 className="text-2xl font-bold mb-4">{name}</h1>
-    <p className="text-slate-500">Módulo em desenvolvimento conforme requisitos da V2.5</p>
+    <p className="text-slate-50">Módulo em desenvolvimento conforme requisitos da V2.5</p>
   </div>
 );
 

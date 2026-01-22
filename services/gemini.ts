@@ -1,6 +1,7 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
+// Fix: Directly use process.env.API_KEY as per GenAI SDK guidelines
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export interface ExtractedData {
@@ -38,8 +39,8 @@ export const geminiService = {
         }
       });
 
-      const text = response.text;
-      return JSON.parse(text || '{}');
+      // Fix: response.text is a property
+      return JSON.parse(response.text || '{}');
     } catch (error) {
       console.error("AI Extraction error:", error);
       return { reasoning: "Erro na extração de IA. Verifique manualmente." };

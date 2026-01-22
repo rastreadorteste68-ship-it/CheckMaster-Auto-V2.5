@@ -288,7 +288,8 @@ const ExecuteInspection: React.FC = () => {
             {fields.map((field) => (
                 <div 
                     key={field.id} 
-                    ref={el => fieldRefs.current[field.id] = el}
+                    // Fix: Ensure ref callback returns void to comply with React type definitions
+                    ref={el => { fieldRefs.current[field.id] = el; }}
                     className="bg-white p-6 md:p-10 rounded-[40px] border border-slate-100 shadow-sm space-y-8 animate-in slide-in-from-bottom-4 duration-500"
                 >
                     <div className="flex items-start gap-4">

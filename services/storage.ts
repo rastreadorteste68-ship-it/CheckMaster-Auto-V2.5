@@ -1,5 +1,5 @@
 
-import { Inspection, ChecklistTemplate, Company, Client, ChecklistField } from '../types';
+import { Inspection, ChecklistTemplate, Company, ChecklistField } from '../types';
 
 const STORAGE_KEYS = {
   INSPECTIONS: 'cm_inspections',
@@ -67,38 +67,12 @@ export const storage = {
                 { id: 's1', label: 'Vistoria Padrão SAS', type: 'BOOLEAN', required: true, options: [] },
                 { id: 's2', label: 'Leitura de Placa', type: 'AI_PLATE', required: true, options: [] }
               ] 
-            },
-            { 
-              id: '1', 
-              name: 'Instalação Rastreador Pro', 
-              companyId: 'comp1', 
-              isFavorite: true,
-              includeVehicleInfo: true,
-              fields: [
-                { id: 'f1', label: 'Placa do Veículo', type: 'AI_PLATE', required: true, options: [] },
-                { id: 'f2', label: 'Teste de Ignição', type: 'BOOLEAN', required: true, options: [] },
-                { id: 'f3', label: 'Posicionamento GPS', type: 'BOOLEAN', required: true, options: [] },
-                { id: 'f4', label: 'Fotos da Instalação', type: 'PHOTO', required: false, options: [] }
-              ] 
-            },
-            { 
-              id: '2', 
-              name: 'Manutenção Corretiva', 
-              companyId: 'comp1', 
-              isFavorite: false,
-              includeVehicleInfo: true,
-              fields: createDefaultFields(6)
             }
         ];
         localStorage.setItem(STORAGE_KEYS.TEMPLATES, JSON.stringify(defaults));
         return defaults;
     }
-    try {
-        return JSON.parse(data);
-    } catch (e) {
-        console.error("Erro ao carregar templates:", e);
-        return [];
-    }
+    return JSON.parse(data);
   },
 
   saveTemplate: (template: ChecklistTemplate) => {
@@ -126,11 +100,7 @@ export const storage = {
             ...original, 
             id: Math.random().toString(36).substr(2, 9), 
             name: `${original.name} (Cópia)`,
-            isFavorite: false,
-            fields: (original.fields || []).map(f => ({
-                ...f,
-                options: (f.options || []).map(o => ({ ...o }))
-            }))
+            isFavorite: false
         };
         all.push(copy);
         localStorage.setItem(STORAGE_KEYS.TEMPLATES, JSON.stringify(all));
@@ -149,9 +119,5 @@ export const storage = {
   getCurrentCompany: (): Company => {
     const data = localStorage.getItem(STORAGE_KEYS.CURRENT_COMPANY);
     return data ? JSON.parse(data) : { id: 'comp1', name: 'Empresa Matriz' };
-  },
-
-  setCurrentCompany: (company: Company) => {
-    localStorage.setItem(STORAGE_KEYS.CURRENT_COMPANY, JSON.stringify(company));
   }
 };
