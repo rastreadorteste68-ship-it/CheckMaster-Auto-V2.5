@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -38,17 +37,57 @@
         .glow-green { box-shadow: 0 0 40px rgba(16, 185, 129, 0.4); }
         .glow-indigo { box-shadow: 0 0 40px rgba(99, 102, 241, 0.4); }
 
+        /* Print Optimization - Highly Aesthetic PDF */
         @media print {
-            @page { size: A4; margin: 0; }
+            @page {
+                size: A4;
+                margin: 0;
+            }
             .print\:hidden { display: none !important; }
             aside, nav, .no-print { display: none !important; }
             main { margin: 0 !important; padding: 0 !important; width: 100% !important; max-width: 100% !important; }
             body { background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .print-container { padding: 40px; }
-            .print-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            .print-table th { background-color: #0033a0 !important; color: white !important; padding: 12px; text-align: left; font-weight: 900; text-transform: uppercase; font-size: 10px; letter-spacing: 0.1em; }
-            .print-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-size: 11px; color: #334155; }
-            .print-total-row td { background-color: #f8fafc !important; font-weight: 900; color: #0033a0 !important; font-size: 14px; }
+            
+            .print-container {
+                padding: 40px;
+                display: block !important;
+            }
+            
+            .print-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            
+            .print-table th {
+                background-color: #0033a0 !important;
+                color: white !important;
+                padding: 12px;
+                text-align: left;
+                font-weight: 900;
+                text-transform: uppercase;
+                font-size: 10px;
+                letter-spacing: 0.1em;
+            }
+            
+            .print-table td {
+                padding: 12px;
+                border-bottom: 1px solid #f1f5f9;
+                font-size: 11px;
+                color: #334155;
+            }
+            
+            .print-total-row td {
+                background-color: #f8fafc !important;
+                font-weight: 900;
+                color: #0033a0 !important;
+                font-size: 14px;
+            }
+
+            .print-header-gradient {
+                background: linear-gradient(to right, #0033a0, #0055ff) !important;
+                color: white !important;
+            }
         }
 
         ::-webkit-scrollbar { width: 8px; }
