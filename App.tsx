@@ -17,7 +17,6 @@ const Placeholder = ({ name }: { name: string }) => (
 );
 
 const App: React.FC = () => {
-  // CONFIRMAÇÃO OBRIGATÓRIA: Confirmo que todo o código será mantido e modificado exclusivamente dentro da pasta /src.
   return (
     <HashRouter>
       <Layout>
