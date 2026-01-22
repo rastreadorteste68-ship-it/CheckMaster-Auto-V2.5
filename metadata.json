@@ -1,8 +1,7 @@
 {
-  "name": "CheckMaster Auto V2.5",
-  "description": "Professional automotive inspection PWA with AI-powered features and dynamic checklists.",
+  "name": "CheckMasterAuto7,7",
+  "description": "Professional vehicle inspection PWA with AI-powered OCR and checklist management.",
   "requestFramePermissions": [
-    "camera",
-    "microphone"
+    "camera"
   ]
 }
